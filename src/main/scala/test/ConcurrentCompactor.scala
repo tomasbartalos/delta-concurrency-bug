@@ -8,6 +8,8 @@ import spark.implicits._
 object ConcurrentCompactor extends App {
 
   val mutex = new AtomicBoolean(true)
+
+  //sleeper udf to slow down compactor execution
   val sleepUdf = udf((id: Long) => {
     if(mutex.getAndSet(false)) {
       Thread.sleep(20000)
@@ -27,5 +29,3 @@ object ConcurrentCompactor extends App {
     .option("dataChange", "false")
     .save(target)
 }
-
-case class Test(id: Long, batchId: Long, part: Int)

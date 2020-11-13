@@ -1,1 +1,5 @@
 /.idea/
+/project/target/
+/target/
+/delta-concurrent-bug.iml
+/project/project/

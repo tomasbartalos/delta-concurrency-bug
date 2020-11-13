@@ -31,8 +31,7 @@ object ConcurrentAppend extends App with Logging {
   }
 
   private def append(): Unit = {
-    var batchId = 0L
-    batchId = appendInternal()
+    val batchId = appendInternal()
     logInfo(f"Saved batchId: $batchId")
   }
 
