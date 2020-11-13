@@ -8,16 +8,6 @@ version := "1.0.0"
 
 scalaVersion := "2.12.8"
 
-scalacOptions ++= Seq(
-  //because we use SAM
-  "-Xexperimental"
-)
-resolvers ++= Seq(
-  //for local libs development
-  Resolver.mavenLocal,
-  "Nexus" at "http://nexus2.nike.sk/repository/nike-public/"
-)
-
 
 val sparkVersion = "3.0.1"
 
