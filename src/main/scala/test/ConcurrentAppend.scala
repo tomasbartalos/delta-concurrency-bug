@@ -3,13 +3,12 @@ package test
 import java.util.concurrent.atomic.AtomicLong
 
 import org.apache.hadoop.fs.Path
-import org.apache.spark.internal.Logging
 import org.apache.spark.sql.delta.DeltaTableUtils
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types.IntegerType
-import spark.implicits._
+import test.spark.implicits._
 
-object ConcurrentAppend extends App with Logging {
+object ConcurrentAppend extends BaseAppRunner {
   configureLog4J()
 
   val id: AtomicLong = {
@@ -24,8 +23,13 @@ object ConcurrentAppend extends App with Logging {
 
   run()
 
-  def run() = {
-    0.to(100000).foreach { _ =>
+  def run(): Unit = {
+    runAppend()
+    spark.stop()
+  }
+
+  private def runAppend(): Unit = {
+    0.to(50).foreach { _ =>
       append()
     }
   }
