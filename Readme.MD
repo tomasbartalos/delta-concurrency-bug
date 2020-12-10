@@ -19,6 +19,7 @@ This will:
 * run compactor against local filesystem (`/tmp/concurrent_delta`)
 
 **Howto check test results:**
+
 Search for "Test Result: " string in logs
 
 # Howto to reproduce on HDFS:
@@ -48,4 +49,4 @@ Run:
 This will:
 * remove compiled scala binary files (`./target`)
 * remove locally created data files (`/tmp/concurrent_delta`, `/tmp/delta-concurrency-bug`)
-* remove docker resources (container, images, volumes)
+* remove created docker resources (container, images, volumes)
