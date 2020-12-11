@@ -16,6 +16,9 @@ services:
       - namenode
       - spark
       - spark-worker
+    ports:
+      - '5005:5005'
+      - '4040:4040'
   compactor:
     build: ./app
     image: delta-concurrency-bug-app:1.0.0
@@ -28,6 +31,9 @@ services:
       - CLASS=test.ConcurrentCompactor
     depends_on:
       - appender
+    ports:
+      - '5006:5005'
+      - '4041:4040'
   namenode:
     build: ./hadoop/namenode
     image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8

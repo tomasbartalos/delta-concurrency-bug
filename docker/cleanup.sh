@@ -14,3 +14,5 @@ for c in appender compactor namenode datanode # resourcemanager nodemanager1 his
 do
 	cleanup "$c"
 done
+docker volume rm docker_hadoop_namenode
+docker volume rm docker_hadoop_datanode

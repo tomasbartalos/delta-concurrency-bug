@@ -2,7 +2,9 @@ import org.apache.log4j.PropertyConfigurator
 import org.apache.spark.sql.SparkSession
 
 package object test {
-  val spark = SparkSession.builder().getOrCreate()
+  val spark = SparkSession.builder()
+    .config("spark.delta.logStore.class", "org.apache.spark.sql.delta.storage.HDFSLogStore")
+    .getOrCreate()
 
   var target = "/tmp/concurrent_delta"
 

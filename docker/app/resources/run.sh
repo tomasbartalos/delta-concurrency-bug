@@ -23,11 +23,11 @@ echo "Submitting spark job ..."
 --executor-memory $EXECUTOR_MEMORY \
 --master $MASTER \
 --executor-cores=${EXECUTOR_CORES} \
+--conf spark.driver.extraJavaOptions=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 \
 --total-executor-cores=${CORES} \
 --conf spark.jars.ivy=/root/.ivy \
 --conf spark.driver.host="$(hostname --ip-address)" \
 --class ${CLASS} \
---driver-java-options="-XX:+CrashOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/logs/datalake" \
 /usr/spark-app/*.jar "${DELTA_TARGET}"
 
 echo ------------------------------------------------------------
